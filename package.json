@@ -1,0 +1,26 @@
+{
+  "name": "electron-video",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "clean": "rm -rf .cache dist/",
+    "build": "yarn clean && parcel build app/index.html --no-minify --no-source-maps --public-url ./ --target electron",
+    "watch": "parcel watch app/index.html --public-url ./ --target electron"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.1.0",
+    "antd": "^4.2.2",
+    "electron": "^8.2.5",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4"
+  }
+}
