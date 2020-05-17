@@ -23,6 +23,7 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "no-restricted-syntax": 0
+        "no-restricted-syntax": 0,
+        "max-len": 0
     }
 };

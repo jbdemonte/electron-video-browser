@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Layout, Breadcrumb } from 'antd';
 
 import Shortcuts from './Shortcuts';
+import FileBrowser from './FileBrowser';
 
 const {
   Header, Content, Footer, Sider,
@@ -9,26 +10,24 @@ const {
 
 const AppLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [path, setPath] = useState('');
+  const [folder, setFolder] = useState('');
 
   useEffect(() => {
-    console.log(path);
-  }, [path]);
+    console.log(folder);
+  }, [folder]);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-        <Shortcuts onChange={setPath} />
+        <Shortcuts onChange={setFolder} />
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>{ path }</Breadcrumb.Item>
+            <Breadcrumb.Item>{ folder }</Breadcrumb.Item>
           </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            Bill is a cat.
-          </div>
+          <FileBrowser folder={folder} openFolder={setFolder} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
