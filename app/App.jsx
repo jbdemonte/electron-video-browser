@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { AppLayout } from './components/AppLayout';
+import AppLayout from './components/AppLayout';
 
-// https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname
+const App = () => <AppLayout />;
 
-export class App extends Component {
-  render() {
-    return (
-      <AppLayout />
-    );
-  }
-}
+export default App;

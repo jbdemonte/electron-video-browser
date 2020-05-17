@@ -23,9 +23,6 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "import/named": 0,
-        "import/prefer-default-export": 0,
-        "react/state-in-constructor": 0,
-        "react/prefer-stateless-function": 0
+        "no-restricted-syntax": 0
     }
 };
