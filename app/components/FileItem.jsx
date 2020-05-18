@@ -6,7 +6,12 @@ import { FolderOutlined, FileOutlined } from '@ant-design/icons';
 import reduceFilename from '../tools/reduce-filename';
 
 const FileItem = ({ filePath, onFolderDoubleClick }) => {
-  const stat = statSync(filePath);
+  let stat;
+  try {
+    stat = statSync(filePath);
+  } catch (e) {
+    return <></>;
+  }
   const isDirectory = stat.isDirectory();
   const onDoubleClick = isDirectory ? () => onFolderDoubleClick(filePath) : () => null;
 
