@@ -26,6 +26,8 @@ module.exports = {
     ],
     "rules": {
         "no-restricted-syntax": 0,
-        "max-len": 0
+        "max-len": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "jsx-a11y/interactive-supports-focus": 0
     }
 };

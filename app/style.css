@@ -3,6 +3,16 @@
     flex-direction: column;
 }
 
+.folder-breadcrumbs span {
+    display: inline-block;
+    padding: 10px 2px;
+    cursor: pointer;
+}
+
+.folder-breadcrumbs span:hover {
+    background-color: #c6ebf9;
+}
+
 .file-browser {
     display: flex;
     flex-direction: row;

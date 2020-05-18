@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 
 import Shortcuts from './Shortcuts';
 import FileBrowser from './FileBrowser';
+import FolderBreadcrumb from './FolderBreadcrumb';
 
 const {
   Header, Content, Footer, Sider,
@@ -24,9 +25,7 @@ const AppLayout = () => {
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>{ folder }</Breadcrumb.Item>
-          </Breadcrumb>
+          <FolderBreadcrumb fullPath={folder} onClick={setFolder} />
           <FileBrowser folder={folder} openFolder={setFolder} />
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
