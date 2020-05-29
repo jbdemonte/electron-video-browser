@@ -35,7 +35,7 @@
     font-size: 30px;
 }
 
-.file-item .inner span:last-child {
+.file-item .inner span.filename {
     text-align: center;
     display: block;
     font-size: 13px;
@@ -44,4 +44,31 @@
 
 .file-item:hover .inner {
     background-color: #c6ebf9;
+}
+
+.file-item.video-item {
+    width: 200px;
+}
+
+.file-item.video-item .inner {
+    padding: 10px;
+}
+
+.file-item.video-item .img {
+    width: 120px;
+    height: 90px;
+    background: #cdcdcd;
+    border-radius: 3px;
+}
+
+.file-item.video-item .tags img {
+    height: 20px;
+}
+
+.file-item.video-item .tags img + img {
+    margin-left: 5px;
+}
+
+.file-item.video-item .languages span:first-child{
+    margin-right: 5px;
 }
