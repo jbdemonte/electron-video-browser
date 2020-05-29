@@ -9,6 +9,7 @@ import extractVideoInformations from '../tools/ffprobe';
 import Quality from './Quality';
 import Codec from './Codec';
 import Flag from './Flag';
+import searchOnTMDB from '../tools/tmdb';
 
 const filterNoNamedLanguages = (languages) => languages.filter((stream) => stream.language);
 
@@ -56,20 +57,39 @@ const renderInformations = (informations) => (
   </>
 );
 
+// eslint-disable-next-line camelcase
+const renderCover = (informations) => (informations?.tmdb?.poster_path ? (
+  <img
+    className="cover"
+    alt={informations.title}
+    src={informations.tmdb.poster_path}
+  />
+) : <div className="cover" />);
+
+
+const fetchMovieData = async (filePath, updateInformations) => {
+  const informations = await extractVideoInformations(filePath);
+
+  informations.audio = filterNoNamedLanguages(informations.audio);
+  informations.subtitle = filterNoNamedLanguages(informations.subtitle);
+
+  updateInformations(informations);
+
+  const tmdb = await searchOnTMDB(informations.title, informations.year);
+  updateInformations({ ...informations, tmdb });
+};
+
 const VideoFile = ({ filePath, onDoubleClick }) => {
   const [informations, setInformations] = useState(null);
+
   useEffect(() => {
-    async function fetchData() {
-      const infos = await extractVideoInformations(filePath);
-      setInformations({ ...infos, audio: filterNoNamedLanguages(infos.audio), subtitle: filterNoNamedLanguages(infos.subtitle) });
-    }
-    fetchData();
+    fetchMovieData(filePath, setInformations);
   }, []);
 
   return (
     <div className="file-item video-item" onDoubleClick={onDoubleClick}>
       <div className="inner">
-        <div className="img" />
+        { renderCover(informations) }
         {
           informations ? renderInformations(informations) : <span className="filename">{reduceFilename(basename(filePath))}</span>
         }
