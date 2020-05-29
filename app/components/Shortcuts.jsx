@@ -25,19 +25,15 @@ function getUserPaths() {
   };
 }
 
-const Shortcuts = ({ onChange }) => {
+const Shortcuts = ({ onClick }) => {
   const paths = getUserPaths();
   const defaultPath = paths.desktop;
 
-  const onClick = (item) => {
-    onChange(item.key);
-  };
-
   // on load, trigger the default  selected path
-  useEffect(() => onChange(defaultPath), []);
+  useEffect(() => onClick(defaultPath), []);
 
   return (
-    <Menu theme="dark" mode="inline" onClick={onClick} defaultSelectedKeys={[defaultPath]}>
+    <Menu theme="dark" mode="inline" onClick={(item) => onClick(item.key)} defaultSelectedKeys={[defaultPath]}>
       { Shortcut('Home', paths.home, <HomeOutlined />) }
       { Shortcut('Bureau', paths.desktop, <DesktopOutlined />) }
       { Shortcut('Documents', paths.documents, <FileOutlined />) }
@@ -50,11 +46,11 @@ const Shortcuts = ({ onChange }) => {
 };
 
 Shortcuts.propTypes = {
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Shortcuts.defaultProps = {
-  onChange: () => null,
+  onClick: () => null,
 };
 
 export default Shortcuts;
