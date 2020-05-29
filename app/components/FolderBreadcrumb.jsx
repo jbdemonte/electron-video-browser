@@ -11,12 +11,12 @@ const FolderBreadcrumb = ({ fullPath, onClick }) => {
             folders.map((folder, index) => {
               const bread = folders.slice(0, index + 1).join(sep) || sep;
               return (
-                <>
-                  <span key={bread} role="button" onClick={() => onClick(bread)}>
+                <React.Fragment key={bread}>
+                  <span role="button" onClick={() => onClick(bread)}>
                     {folder}
                   </span>
                   <span role="button" onClick={() => onClick(bread)}>{sep}</span>
-                </>
+                </React.Fragment>
               );
             })
         }
