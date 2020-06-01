@@ -1,24 +1,37 @@
 {
-  "name": "electron-video",
+  "name": "electron-video-browser",
+  "description": "Simple Video file browser developed using React and Electron",
+  "author": "Jean-Baptiste Demonte <jbdemonte@gmail.com> (https://jb.demonte.fr)",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "ISC",
   "main": "main.js",
   "scripts": {
     "test": "jest",
     "start": "electron .",
-    "clean": "rm -rf .cache dist/",
+    "clean": "rm -rf .cache output dist",
     "ffprobe": "node download_ffprobe.js",
     "build": "yarn clean && yarn ffprobe && parcel build app/index.html --no-minify --no-source-maps --public-url ./ --target electron",
-    "watch": "parcel watch app/index.html --public-url ./ --target electron"
+    "watch": "parcel watch app/index.html --public-url ./ --target electron",
+    "build-app": "yarn build && electron-builder"
+  },
+  "build": {
+    "appId": "com.github.jbdemonte.electronvideo",
+    "productName": "Electron Video Browser",
+    "directories": {
+      "output": "output"
+    },
+    "files": [
+      "bin/*",
+      "dist/*",
+      "node_modules/*",
+      "main.js"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
     "antd": "^4.2.2",
-    "electron": "^8.2.5",
     "ffbinaries": "^1.1.4",
     "flag-icon-css": "^3.4.6",
-    "jest": "^26.0.1",
-    "parcel-bundler": "^1.12.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -29,6 +42,8 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "babel-eslint": "^10.1.0",
+    "electron": "^8.2.5",
+    "electron-builder": "^22.7.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
@@ -36,6 +51,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "jest": "^26.0.1",
+    "parcel-bundler": "^1.12.4",
     "regenerator-runtime": "^0.13.5"
   }
 }
