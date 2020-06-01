@@ -23,7 +23,7 @@ const AppLayout = () => {
           <FolderBreadcrumb fullPath={folder} onClick={setFolder} />
           <FileBrowser folder={folder} openFolder={setFolder} />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Powered by Electron, React and Ant-Design</Footer>
+        <Footer style={{ textAlign: 'center', userSelect: 'none' }}>Powered by Electron, React and Ant-Design</Footer>
       </Layout>
     </Layout>
   );
